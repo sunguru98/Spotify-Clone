@@ -1,1 +1,3 @@
-export default 4;
+export interface AuthState {
+  accessToken: string | null;
+}
