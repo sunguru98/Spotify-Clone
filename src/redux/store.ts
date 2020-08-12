@@ -8,7 +8,7 @@ const store = createStore<
   RootState,
   AppActions,
   { dispatch: ThunkDispatch<RootState, null, AppActions> },
-  any
+  {}
 >(
   rootReducer,
   composeWithDevTools(

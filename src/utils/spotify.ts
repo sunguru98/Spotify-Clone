@@ -19,7 +19,7 @@ export const extractAccessToken = (data: string): string | undefined => {
     .split("&")
     .reduce((acc: { [key: string]: string }, el: string) => {
       const [key, value] = el.split("=");
-      acc[key] = value;
+      acc[key] = decodeURIComponent(value);
       return acc;
     }, {});
   console.log(extractedData);

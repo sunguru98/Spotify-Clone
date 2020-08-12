@@ -14,7 +14,9 @@ const Callback: React.FC<CallbackProps> = ({
 }) => {
   useEffect(() => {
     const accessToken = extractAccessToken(hash);
-    if (accessToken) setAccessToken(accessToken);
+    if (accessToken) {
+      setAccessToken(accessToken);
+    }
     history.push("/");
   }, [hash, setAccessToken, history]);
   return null;

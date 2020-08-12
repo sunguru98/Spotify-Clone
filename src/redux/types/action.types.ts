@@ -1,4 +1,13 @@
-import { SET_ACCESS_TOKEN, LOG_OUT } from "../actionTypes";
+import { SET_ACCESS_TOKEN, LOG_OUT, SET_USER } from "../actionTypes";
+import { RootState } from "../rootReducer";
+import { ThunkAction } from "redux-thunk";
+
+export type GenericThunkAction<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  AppActions
+>;
 
 export interface SetAccessTokenAction {
   type: typeof SET_ACCESS_TOKEN;
@@ -6,8 +15,13 @@ export interface SetAccessTokenAction {
 }
 
 export interface LogoutAction {
-  type: typeof LOG_OUT
+  type: typeof LOG_OUT;
 }
 
-export type AuthActions = SetAccessTokenAction | LogoutAction;
+export interface SetUserAction {
+  type: typeof SET_USER;
+  payload: SpotifyApi.CurrentUsersProfileResponse | null;
+}
+
+export type AuthActions = SetAccessTokenAction | LogoutAction | SetUserAction;
 export type AppActions = AuthActions;
