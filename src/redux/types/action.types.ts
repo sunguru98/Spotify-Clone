@@ -24,4 +24,5 @@ export interface SetUserAction {
 }
 
 export type AuthActions = SetAccessTokenAction | LogoutAction | SetUserAction;
-export type AppActions = AuthActions;
+export type DataActions = { type: "" };
+export type AppActions = AuthActions | DataActions;
