@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/317d2606-0d53-4bcc-ad54-faecf2608caa/deploy-status)](https://app.netlify.com/sites/spotifyreact/deploys)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
