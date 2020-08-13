@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import StyledPlaylistContainer from "../styles/components/StyledPlaylistContainer";
+import { fetchMyPlaylists } from "../utils/spotifyAuth";
 
-const PlaylistOption = () => {
+const PlaylistOption: React.FC = () => {
+  useEffect(() => {
+    setTimeout(() => fetchMyPlaylists().then(playlists => console.log(playlists)), 1)
+  }, []);
   return (
     <StyledPlaylistContainer>
       <h2>Playlists</h2>

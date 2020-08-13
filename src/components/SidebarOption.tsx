@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import SidebarOptionContainer from "../styles/components/SidebarOptionContainer";
 import { NavLink, RouteComponentProps, withRouter } from "react-router-dom";
 
@@ -26,7 +26,6 @@ const SidebarOption: React.FC<SidebarOptionProps> = ({
   activeClassName,
   location: { pathname },
 }) => {
-  const [activeState, setActiveState] = useState(false);
   return (
     <SidebarOptionContainer>
       <NavLink to={to} exact activeClassName={activeClassName}>

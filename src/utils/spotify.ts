@@ -1,3 +1,10 @@
+import SpotifyWebApi from "spotify-web-api-js";
+
+export const spotify = new SpotifyWebApi();
+
+export const init = (accessToken: string) =>
+  spotify.setAccessToken(accessToken);
+
 const spotifyScopes = [
   "ugc-image-upload",
   "user-read-playback-state",
@@ -13,18 +20,18 @@ const spotifyScopes = [
   "user-follow-modify",
 ].join("%20");
 
-export const extractAccessToken = (data: string): string | undefined => {
+export const extractAuthCode = (
+  data: string
+): { authCode: string; error: string } => {
   const extractedData = data
-    .replace("#", "")
+    .replace("?", "")
     .split("&")
     .reduce((acc: { [key: string]: string }, el: string) => {
       const [key, value] = el.split("=");
       acc[key] = decodeURIComponent(value);
       return acc;
     }, {});
-  console.log(extractedData);
-  if ("access_token" in extractedData) return extractedData.access_token;
-  return undefined;
+  return { authCode: extractedData.code, error: extractedData.error };
 };
 
 export const spotifyURL = new URL("https://accounts.spotify.com/authorize");
@@ -37,4 +44,4 @@ spotifyURL.searchParams.append(
   window.location.origin + "/callback"
 );
 spotifyURL.searchParams.append("scope", spotifyScopes);
-spotifyURL.searchParams.append("response_type", "token");
+spotifyURL.searchParams.append("response_type", "code");

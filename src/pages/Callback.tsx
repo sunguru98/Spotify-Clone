@@ -3,23 +3,27 @@ import { connect, ConnectedProps } from "react-redux";
 import { RouteComponentProps } from "react-router-dom";
 import { setAccessToken } from "../redux/actions/authActions";
 
-import { extractAccessToken } from "../utils/spotify";
+import { extractAuthCode } from "../utils/spotify";
 
-interface CallbackProps extends ReduxProps, RouteComponentProps {}
+type CallbackProps = ReduxProps & RouteComponentProps;
 
 const Callback: React.FC<CallbackProps> = ({
-  location: { hash },
+  location: { search },
   history,
   setAccessToken,
 }) => {
   useEffect(() => {
-    const accessToken = extractAccessToken(hash);
-    if (accessToken) {
-      setAccessToken(accessToken);
+    const { authCode, error } = extractAuthCode(search);
+    if (error) {
+      alert("Something went wrong! Please try again");
+      history.push("/login");
     }
-    history.push("/");
-  }, [hash, setAccessToken, history]);
-  return null;
+
+    if (authCode) {
+      setAccessToken(authCode);
+    }
+  }, [search, setAccessToken, history]);
+  return <div>Please wait while we redirect you!</div>;
 };
 
 const connector = connect(null, { setAccessToken });

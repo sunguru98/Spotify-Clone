@@ -1,48 +1,41 @@
 import React, { useEffect } from "react";
-import { RouteComponentProps, Switch, Route } from "react-router-dom";
+import { RouteComponentProps } from "react-router-dom";
 import { ConnectedProps, connect } from "react-redux";
 
 import { RootState } from "../redux/rootReducer";
-import { setSpotifyUser } from "../redux/actions/authActions";
+import { checkForTokenExpiry } from "../redux/actions/authActions";
 import StyledPlayerContainer from "../styles/pages/StyledPlayerContainer";
 import PlayerSidebar from "../components/PlayerSidebar";
 import PlayerBody from "../components/PlayerBody";
 import PlayerFooter from "../components/PlayerFooter";
-import HomeContent from "../styles/components/HomeContent";
-import SearchContent from "../styles/components/SearchContent";
-import LibraryContent from "../styles/components/LibraryContent";
 
 type HomeProps = RouteComponentProps & ReduxProps;
 
-const Home: React.FC<HomeProps> = ({ setSpotifyUser, accessToken, user }) => {
+const Home: React.FC<HomeProps> = ({ checkForTokenExpiry }) => {
   useEffect(() => {
-    console.log("Home page invoked");
-    if (!user && accessToken) {
-      setSpotifyUser(accessToken);
-    }
-  }, [setSpotifyUser, accessToken, user]);
+    checkForTokenExpiry();
+  }, [checkForTokenExpiry]);
 
   return (
     <StyledPlayerContainer>
       <section>
         <PlayerSidebar />
-        <Switch>
-          <Route exact path='/' component={HomeContent} />
-          <Route exact path='/search' component={SearchContent} />
-          <Route exact path='/library' component={LibraryContent} />
-        </Switch>
+        <PlayerBody />
       </section>
       <PlayerFooter />
     </StyledPlayerContainer>
   );
 };
 
-const mapStateToProps = (state: RootState) => ({
-  user: state.auth.user,
-  accessToken: state.auth.accessToken,
+const mapStateToProps = ({
+  auth: { accessToken, refreshToken, expiresIn },
+}: RootState) => ({
+  accessToken: accessToken,
+  expiresIn: expiresIn,
+  refreshToken: refreshToken,
 });
 
-const connector = connect(mapStateToProps, { setSpotifyUser });
+const connector = connect(mapStateToProps, { checkForTokenExpiry });
 type ReduxProps = ConnectedProps<typeof connector>;
 
 export default connector(Home);
