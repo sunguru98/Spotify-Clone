@@ -2,9 +2,8 @@ import styled from "styled-components";
 
 export default styled.aside`
   background: var(--primary-spotify-sidebar-color);
-  min-width: 23.2rem;
+  flex-basis: 23.2rem;
   padding: 2.4rem 0;
-  flex: 0.2;
   & a.logo {
     display: block;
     margin-bottom: 1.8rem;

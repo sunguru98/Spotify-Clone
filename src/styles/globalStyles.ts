@@ -16,6 +16,18 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
+  [class*=" spoticon"]::before, [class^="spoticon"]::before {
+    font-family: "Spoticon";
+    font-style: normal;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: inherit;
+    vertical-align: bottom;
+    display: inline-block;
+    text-decoration: inherit;
+  }
+
   html {
     font-size: 62.5%;
   }
@@ -29,5 +41,9 @@ export default createGlobalStyle`
   a:active, a:visited, a:link {
     color: inherit;
     text-decoration: none;
+  }
+
+  ul { 
+    list-style: none;
   }
 `;

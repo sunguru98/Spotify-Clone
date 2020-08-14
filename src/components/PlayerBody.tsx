@@ -1,13 +1,16 @@
 import React from "react";
-import StyledBody from "../styles/components/StyledBody";
 import { Switch, Route } from "react-router-dom";
-import HomeContent from "../styles/components/HomeContent";
-import SearchContent from "../styles/components/SearchContent";
-import LibraryContent from "../styles/components/LibraryContent";
+
+import StyledBody from "../styles/components/StyledBody";
+import HomeContent from "./HomeContent";
+import SearchContent from "./SearchContent";
+import LibraryContent from "./LibraryContent";
+import TopBar from "./TopBar";
 
 const PlayerBody = () => {
   return (
     <StyledBody>
+      <TopBar />
       <Switch>
         <Route exact path='/' component={HomeContent} />
         <Route exact path='/search' component={SearchContent} />

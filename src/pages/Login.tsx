@@ -2,7 +2,7 @@ import React from "react";
 import { connect, ConnectedProps } from "react-redux";
 
 import StyledLoginContainer from "../styles/pages/StyledLoginContainer";
-import StyledButton from "../styles/StyledButton";
+import StyledButton from "../styles/components/StyledButton";
 import { spotifyURL } from "../utils/spotify";
 import spotifyLogo from "../assets/spotify-logo.png";
 import { RootState } from "../redux/rootReducer";

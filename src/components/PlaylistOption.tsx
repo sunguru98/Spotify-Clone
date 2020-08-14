@@ -1,22 +1,51 @@
 import React, { useEffect } from "react";
+import { connect, ConnectedProps } from "react-redux";
 import StyledPlaylistContainer from "../styles/components/StyledPlaylistContainer";
-import { fetchMyPlaylists } from "../utils/spotifyAuth";
+import { fetchPlaylists } from "../redux/actions/dataActions";
+import { RootState } from "../redux/rootReducer";
+import { Link } from "react-router-dom";
 
-const PlaylistOption: React.FC = () => {
+type PlaylistOptionProps = {} & ReduxProps;
+
+const PlaylistOption: React.FC<PlaylistOptionProps> = ({
+  fetchPlaylists,
+  playlists,
+  accessToken,
+}) => {
   useEffect(() => {
-    setTimeout(() => fetchMyPlaylists().then(playlists => console.log(playlists)), 1)
-  }, []);
+    accessToken && setTimeout(fetchPlaylists, 0);
+  }, [fetchPlaylists, accessToken]);
+
   return (
     <StyledPlaylistContainer>
       <h2>Playlists</h2>
       <hr />
       <ul>
-        <li>Tamil Top 50</li>
-        <li>Varanam Aayiram</li>
-        <li>Melodies Mattum</li>
+        {accessToken ? (
+          !playlists ? (
+            <li style={{ cursor: "not-allowed", pointerEvents: "none" }}>
+              Fetching playlists
+            </li>
+          ) : (
+            playlists.items.map(playlist => (
+              <li key={playlist.id}>{playlist.name}</li>
+            ))
+          )
+        ) : (
+          <li>
+            <Link to='/login'>Login</Link> to view playlists
+          </li>
+        )}
       </ul>
     </StyledPlaylistContainer>
   );
 };
 
-export default PlaylistOption;
+const mapStateToProps = ({
+  data: { playlists },
+  auth: { accessToken },
+}: RootState) => ({ playlists, accessToken });
+const connector = connect(mapStateToProps, { fetchPlaylists });
+type ReduxProps = ConnectedProps<typeof connector>;
+
+export default connector(PlaylistOption);

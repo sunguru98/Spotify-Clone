@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 export default styled.div`
-  flex: 0.8;
+  position: relative;
+  overflow: auto;
+  flex: 1;
   /* background: linear-gradient(rgb(91, 87, 115), #000) */
   background: var(--primary-spotify-body-color);
-  padding: 1.6rem 3.2rem;
+  padding: calc(1.6rem + 6rem) 3.2rem 1.6rem 3.2rem;
 `;

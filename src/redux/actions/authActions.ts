@@ -3,17 +3,15 @@ import {
   LogoutAction,
   GenericThunkAction,
   SetUserAction,
-  RefreshAuthAction,
   AppActions,
 } from "../types/action.types";
 
-import { SET_AUTH_TOKEN, LOG_OUT, REFRESH_AUTH } from "../actionTypes";
-import { fetchMySpotifyData } from "../../utils/spotifyAuth";
+import { SET_AUTH_TOKEN, LOG_OUT } from "../actionTypes";
 
 import Axios from "axios";
 import moment from "moment";
 import history from "../../history";
-import { init } from "../../utils/spotify";
+import { init, spotify } from "../../utils/spotify";
 
 interface BaseTokenResponse {
   access_token: string;
@@ -84,9 +82,9 @@ export const setAccessToken = (
 
 export const refreshAuthToken = (
   refreshToken: string
-): GenericThunkAction<RefreshAuthAction> => async dispatch => {
+): GenericThunkAction<SetAuthTokenAction> => async dispatch => {
   const {
-    data: { access_token },
+    data: { access_token, expires_in },
   } = await Axios.post<BaseTokenResponse>(
     `${BASE_URL}/api/token`,
     `grant_type=refresh_token&refresh_token=${refreshToken}`,
@@ -99,9 +97,20 @@ export const refreshAuthToken = (
     }
   );
 
+  const expiresInDate = new Date(
+    new Date().getTime() + parseInt(expires_in) * 1000
+  ).toString();
   init(access_token);
   localStorage.setItem("accessToken", access_token);
-  dispatch({ type: REFRESH_AUTH, payload: access_token });
+  localStorage.setItem("expiresIn", expiresInDate);
+  dispatch({
+    type: SET_AUTH_TOKEN,
+    payload: {
+      accessToken: access_token,
+      refreshToken,
+      expiresIn: expiresInDate,
+    },
+  });
 };
 
 export const checkForTokenExpiry = (): GenericThunkAction<AppActions> => (
@@ -131,15 +140,21 @@ export const checkForTokenExpiry = (): GenericThunkAction<AppActions> => (
 export const setSpotifyUser = (): GenericThunkAction<
   SetUserAction
 > => async dispatch => {
-  const user = await fetchMySpotifyData();
-  user && localStorage.setItem("user", JSON.stringify(user));
-  dispatch({ type: "SET_USER", payload: user });
+  try {
+    const user = await spotify.getMe();
+    user && localStorage.setItem("user", JSON.stringify(user));
+    dispatch({ type: "SET_USER", payload: user });
+  } catch (err) {
+    alert("Something went wrong. Please refresh your screen.");
+    dispatch({ type: "SET_USER", payload: null });
+  }
 };
 
 export const logOut = (): LogoutAction => {
   localStorage.removeItem("accessToken");
   localStorage.removeItem("refreshToken");
-  localStorage.removeItem("currentUser");
+  localStorage.removeItem("user");
+  localStorage.removeItem("expiresIn");
   return {
     type: LOG_OUT,
   };

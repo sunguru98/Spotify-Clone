@@ -28,7 +28,12 @@ export default (state = initialState, action: AuthActions) => {
     case REFRESH_AUTH:
       return { ...state, accessToken: action.payload };
     case LOG_OUT:
-      return { ...state, accessToken: null };
+      return {
+        accessToken: null,
+        refreshToken: null,
+        expiresIn: null,
+        user: null,
+      };
     default:
       return state;
   }

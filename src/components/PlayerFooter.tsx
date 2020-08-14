@@ -1,12 +1,13 @@
-import React from 'react'
-import StyledFooter from '../styles/components/StyledFooter'
+import React from "react";
+import StyledFooter from "../styles/components/StyledFooter";
+import PlayBar from "./PlayBar";
 
 const PlayerFooter = () => {
   return (
     <StyledFooter>
-      hi
+      <PlayBar />
     </StyledFooter>
-  )
-}
+  );
+};
 
-export default PlayerFooter
+export default PlayerFooter;
