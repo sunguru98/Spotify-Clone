@@ -7,4 +7,5 @@ export default styled.div`
   /* background: linear-gradient(rgb(91, 87, 115), #000) */
   background: var(--primary-spotify-body-color);
   padding: calc(1.6rem + 6rem) 3.2rem 1.6rem 3.2rem;
+  max-width: 195.5rem;
 `;

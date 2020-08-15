@@ -18,7 +18,7 @@ const Home: React.FC<HomeProps> = ({ checkForTokenExpiry }) => {
 
   return (
     <StyledPlayerContainer>
-      <section>
+      <section className="app-container">
         <PlayerSidebar />
         <PlayerBody />
       </section>

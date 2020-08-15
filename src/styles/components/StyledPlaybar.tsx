@@ -34,6 +34,9 @@ export default styled.div<{ isLiked: boolean }>`
       align-items: flex-start;
 
       & .music-name {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
         color: #fff;
         font-size: 1.4rem;
       }
