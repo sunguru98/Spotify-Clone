@@ -8,7 +8,7 @@ import { ReactComponent as SongPlayIcon } from "../assets/song-play.svg";
 import { Link } from "react-router-dom";
 
 const PlaylistDetail = () => {
-  const [selectedSong, setSelectedSong] = useState(null);
+  //const [selectedSong, setSelectedSong] = useState(null);
 
   return (
     <StyledPlaylistDetail>
