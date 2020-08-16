@@ -60,7 +60,7 @@ export const StyledSongListItem = styled.li<{ isPlaying: boolean }>`
     }
 
     span.artist-media {
-      display: inline-block;
+      display: block;
       & a {
         color: #fff;
         font-size: 1.4rem;
@@ -71,21 +71,24 @@ export const StyledSongListItem = styled.li<{ isPlaying: boolean }>`
           text-decoration: underline;
           opacity: 1;
         }
-
-        &:first-child {
-          margin-right: 0.7em;
-        }
-        &:last-child {
-          margin-left: 0.7em;
-        }
       }
+    }
+
+    & .all-artists {
+      margin-right: 0.7em;
+    }
+
+    & .media {
+      margin-left: 0.7em;
     }
   }
 
   & .duration-container {
     padding-right: 1.4rem;
     color: ${props =>
-      !props.isPlaying ? "white" : "var(--secondary-spotify-color)"};
+      !props.isPlaying
+        ? "rgb(179, 179, 179)"
+        : "var(--secondary-spotify-color)"};
   }
 
   & .additional-option-container {

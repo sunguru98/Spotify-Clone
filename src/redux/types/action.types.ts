@@ -5,6 +5,7 @@ import {
   SET_USER,
   REFRESH_AUTH,
   SET_ERROR,
+  SET_CURRENT_PLAYLIST,
 } from "../actionTypes";
 
 import { RootState } from "../rootReducer";
@@ -49,11 +50,20 @@ export interface SetErrorAction {
   payload: string;
 }
 
+export interface SetCurrentPlaylistAction {
+  type: typeof SET_CURRENT_PLAYLIST;
+  payload: SpotifyApi.SinglePlaylistResponse;
+}
+
 export type AuthActions =
   | SetAuthTokenAction
   | RefreshAuthAction
   | LogoutAction
   | SetUserAction;
-export type DataActions = SetPlaylistsAction | SetErrorAction;
+
+export type DataActions =
+  | SetPlaylistsAction
+  | SetErrorAction
+  | SetCurrentPlaylistAction;
 
 export type AppActions = AuthActions | DataActions;

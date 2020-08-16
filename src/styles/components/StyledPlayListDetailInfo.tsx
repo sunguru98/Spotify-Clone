@@ -85,6 +85,9 @@ export default styled.div`
 
     & a {
       color: #fff;
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
     & span {

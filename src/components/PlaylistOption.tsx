@@ -29,11 +29,9 @@ const PlaylistOption: React.FC<PlaylistOptionProps> = ({
           ) : (
             playlists.items.map(playlist => (
               <li key={playlist.id}>
-                <Link style={{ color: "currentColor" }}
-                  to={`/playlist/${playlist.name
-                    .split(" ")
-                    .join("-")
-                    .toLowerCase()}`}
+                <Link
+                  style={{ color: "currentColor" }}
+                  to={`/playlist/${playlist.id}`}
                 >
                   {playlist.name}
                 </Link>

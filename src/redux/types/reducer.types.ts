@@ -10,4 +10,5 @@ export interface DataState {
   currentSong: null;
   isPlaying: boolean;
   error: string | null;
+  currentPlaylist: SpotifyApi.SinglePlaylistResponse | null;
 }

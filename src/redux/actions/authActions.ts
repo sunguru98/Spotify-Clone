@@ -127,11 +127,9 @@ export const checkForTokenExpiry = (): GenericThunkAction<AppActions> => (
       "minutes"
     );
     if (timeDifferenceInMinutes > 10) {
-      console.log("Access granted");
       init(accessToken);
       dispatch(setSpotifyUser());
     } else {
-      console.log("Refreshing");
       dispatch(refreshAuthToken(refreshToken));
     }
   }

@@ -11,7 +11,6 @@ import { RouteComponentProps, Redirect } from "react-router-dom";
 interface LoginProps extends RouteComponentProps, ReduxProps {}
 
 const Login: React.FC<LoginProps> = ({ accessToken }) => {
-  console.log(accessToken);
   return !accessToken ? (
     <StyledLoginContainer>
       <header>

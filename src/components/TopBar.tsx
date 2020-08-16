@@ -17,7 +17,6 @@ const TopBar: React.FC<{} & ReduxProps & RouteComponentProps> = ({
   logOut,
   history,
 }) => {
-  console.log(history);
   return (
     <StyledTopBar>
       <div className='history-buttons'>

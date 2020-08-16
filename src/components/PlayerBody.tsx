@@ -14,11 +14,7 @@ const PlayerBody = () => {
       <Switch>
         <Route exact path='/' component={HomeContent} />
         <Route exact path='/search' component={SearchContent} />
-        <Route
-          path='/playlist/:playlistName'
-          exact
-          component={PlaylistDetail}
-        />
+        <Route path='/playlist/:playlistId' exact component={PlaylistDetail} />
       </Switch>
     </StyledBody>
   );
