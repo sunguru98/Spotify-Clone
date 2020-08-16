@@ -9,7 +9,7 @@ import { ReactComponent as PlayIcon } from "../assets/play.svg";
 import { ReactComponent as SongPlayIcon } from "../assets/song-play.svg";
 import { Link, RouteComponentProps } from "react-router-dom";
 import { RootState } from "../redux/rootReducer";
-import withLoader, { Loader } from "../hoc/withLoader";
+import { Loader } from "../hoc/withLoader";
 import { fetchParticularPlaylist } from "../redux/actions/dataActions";
 import StyledLoaderContainer from "../styles/components/StyledLoaderContainer";
 
