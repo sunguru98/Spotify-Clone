@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export default styled.header`
   position: absolute;
+  z-index: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;

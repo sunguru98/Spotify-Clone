@@ -6,6 +6,7 @@ import HomeContent from "./HomeContent";
 import SearchContent from "./SearchContent";
 import LibraryContent from "./LibraryContent";
 import TopBar from "./TopBar";
+import PlaylistDetail from "../pages/PlaylistDetail";
 
 const PlayerBody = () => {
   return (
@@ -15,6 +16,11 @@ const PlayerBody = () => {
         <Route exact path='/' component={HomeContent} />
         <Route exact path='/search' component={SearchContent} />
         <Route exact path='/library' component={LibraryContent} />
+        <Route
+          path='/playlist/:playlistName'
+          exact
+          component={PlaylistDetail}
+        />
       </Switch>
     </StyledBody>
   );

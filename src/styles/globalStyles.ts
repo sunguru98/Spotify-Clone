@@ -4,16 +4,27 @@ export default createGlobalStyle`
   :root {
     --primary-border-color: #d9dadc;
     --primary-spotify-color: #1ed760;
+    --secondary-spotify-color: #1db954;
     --primary-spotify-footer-color: #282828;
     --primary-spotify-sidebar-color: #040404;
     --primary-spotify-body-color: #121212;
     --primary-spotify-text-color: #b3b3b3;
   }
 
+  ::-webkit-scrollbar {
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsla(0,0%,100%,.3);
+  }
+
   *, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scrollbar-color: hsla(0,0%,100%,.3) #040404;
   }
 
   [class*=" spoticon"]::before, [class^="spoticon"]::before {

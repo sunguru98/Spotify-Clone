@@ -28,7 +28,16 @@ const PlaylistOption: React.FC<PlaylistOptionProps> = ({
             </li>
           ) : (
             playlists.items.map(playlist => (
-              <li key={playlist.id}>{playlist.name}</li>
+              <li key={playlist.id}>
+                <Link style={{ color: "currentColor" }}
+                  to={`/playlist/${playlist.name
+                    .split(" ")
+                    .join("-")
+                    .toLowerCase()}`}
+                >
+                  {playlist.name}
+                </Link>
+              </li>
             ))
           )
         ) : (

@@ -16,7 +16,7 @@ export default styled.div<{ level: number }>`
   &:hover {
     cursor: pointer;
     & .level {
-      background: #1db954;
+      background: var(--secondary-spotify-color);
     }
 
     & .level-controller {
