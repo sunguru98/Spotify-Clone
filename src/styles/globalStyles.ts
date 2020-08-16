@@ -49,6 +49,11 @@ export default createGlobalStyle`
     font-weight: normal;
   }
 
+  input {
+    font-family: "Circular", sans-serif;
+    font-weight: normal;
+  }
+
   a:active, a:visited, a:link {
     color: inherit;
     text-decoration: none;

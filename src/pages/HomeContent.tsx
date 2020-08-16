@@ -1,6 +1,6 @@
 import React from "react";
 import StyledHomeContent from "../styles/components/StyledHomeContent";
-import HomeContentItem from "./HomeContentItem";
+import HomeContentItem from "../components/HomeContentItem";
 
 const HomeContent = () => {
   return (

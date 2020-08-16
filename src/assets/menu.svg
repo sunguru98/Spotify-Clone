@@ -1,0 +1,20 @@
+<svg height='24' role='img' width='24' viewBox='0 0 24 24'>
+  <path
+    d='M12,11.25a.75.75,0,1,0,.75.76A.74.74,0,0,0,12,11.25Z'
+    fill='currentColor'
+    stroke='currentColor'
+    stroke-miterlimit='10'
+  ></path>
+  <path
+    d='M5.25,11.25A.75.75,0,1,0,6,12,.74.74,0,0,0,5.25,11.25Z'
+    fill='currentColor'
+    stroke='currentColor'
+    stroke-miterlimit='10'
+  ></path>
+  <path
+    d='M18.75,11.25a.75.75,0,1,0,.75.76A.74.74,0,0,0,18.75,11.25Z'
+    fill='currentColor'
+    stroke='currentColor'
+    stroke-miterlimit='10'
+  ></path>
+</svg>

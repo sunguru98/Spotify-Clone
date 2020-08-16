@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { HTMLAttributes } from "react";
-import { ItemCardProps } from "../../components/HomeContentItem";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {}
 

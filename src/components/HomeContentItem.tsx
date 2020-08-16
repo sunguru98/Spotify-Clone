@@ -2,7 +2,6 @@ import React from "react";
 import StyledHomeContentItem, {
   StyledItemCard,
 } from "../styles/components/StyledHomeContentItem";
-import { ReactComponent as PlayIcon } from "../assets/play.svg";
 import { Link } from "react-router-dom";
 
 interface HomeContentItemProps {
